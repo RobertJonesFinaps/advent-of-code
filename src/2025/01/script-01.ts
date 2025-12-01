@@ -37,4 +37,4 @@ function safeRotationCounter(): number {
 const time0 = performance.now();
 safeRotationCounter();
 const time1 = performance.now();
-console.log(`${time0 - time1} milliseconds.`);
+console.log(`${time1 - time0} milliseconds.`);
