@@ -20,7 +20,7 @@ function safeRotationCounter(): number {
 
     let currentPosition: number;
     if (direction === "L") {
-      currentPosition = (previousPosition - rotation) % 100;
+      currentPosition = (previousPosition - rotation) % 100; // this can be negative, see script 2 for fix
     } else if (direction === "R") {
       currentPosition = (previousPosition + rotation) % 100;
     } else {
@@ -34,7 +34,4 @@ function safeRotationCounter(): number {
   return numberOfZeroHits;
 }
 
-const time0 = performance.now();
-safeRotationCounter();
-const time1 = performance.now();
-console.log(`${time1 - time0} milliseconds.`);
+console.log("number of times on 0: ", safeRotationCounter());

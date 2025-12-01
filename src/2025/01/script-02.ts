@@ -26,7 +26,7 @@ function safeRotationClickCounter(): number {
         numberOfFullRevolutions +
         (previousPosition && previousPosition <= partialRotation ? 1 : 0);
 
-      return (((previousPosition - rotation) % 100) + 100) % 100;
+      return (((previousPosition - rotation) % 100) + 100) % 100; // funky double modulo to force positive result
     } else if (direction === "R") {
       numberOfZeroClicks +=
         numberOfFullRevolutions +
@@ -39,7 +39,5 @@ function safeRotationClickCounter(): number {
 
   return numberOfZeroClicks;
 }
-const t0 = performance.now();
-safeRotationClickCounter();
-const t1 = performance.now();
-console.log(`${t1 - t0} milliseconds.`);
+
+console.log("number of times passed 0: ", safeRotationClickCounter());

@@ -1,10 +1,3 @@
-"use strict";
-/** Day 1 challenge 1 part 2
- * Safe starting at 50
- * Rotation data Marked with L or R and a number
- *
- * Count number of rotations that end up passing 0
- * */
 function safeRotationClickCounter() {
     const dataString = (document.getElementsByTagName("pre")[0]?.firstChild).data;
     const dataArray = dataString.split("\n");
@@ -34,7 +27,4 @@ function safeRotationClickCounter() {
     }, 50);
     return numberOfZeroClicks;
 }
-const t0 = performance.now();
-safeRotationClickCounter();
-const t1 = performance.now();
-console.log(`${t1 - t0} milliseconds.`);
+console.log("number of times passed 0: ", safeRotationClickCounter());

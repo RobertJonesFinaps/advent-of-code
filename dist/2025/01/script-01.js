@@ -1,10 +1,3 @@
-"use strict";
-/** Day 1 challenge 1 part 1
- * Safe starting at 50
- * Rotation data Marked with L or R and a number
- *
- * Count number of rotations that end up landing on 0
- * */
 function safeRotationCounter() {
     const dataString = (document.getElementsByTagName("pre")[0]?.firstChild).data;
     const dataArray = dataString.split("\n");
@@ -30,7 +23,4 @@ function safeRotationCounter() {
     }, 50);
     return numberOfZeroHits;
 }
-const time0 = performance.now();
-safeRotationCounter();
-const time1 = performance.now();
-console.log(`${time1 - time0} milliseconds.`);
+console.log("number of times on 0: ", safeRotationCounter());
