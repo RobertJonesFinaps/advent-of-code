@@ -2,11 +2,20 @@
 
 This is a collection of scripts to solve the [advent of code](https://adventofcode.com/) challenges.
 Extremely basic setup for a couple of scripts, with at least some typesafety.
+Originally intended to just be a couple of scripts being compiled directly by typescript, but limitations of code and namespace sharing made this quickly unwieldly. It was decided to use esbuild to bundle everything into distinct scripts which can then be appied to the browser data via the console.
 
-## Setup
+## Getting started
 
-Source code in src, with scripts labelled to match the challenge.
+### Install dependencies
+`npm install`
 
-Run your favourite typescript compiler.
+### Bundle scripts
+`npm run build`
 
-Output javascript files (dist/< year >/< challenge number >) should be able to be pasted directly into the console of the corresponding data input.
+### Making changes
+Source code in src, with scripts labelled to match the challenge. After compiling, the output js can be found in the corresponding folder in the `dist` directory.
+
+Note to add new scripts, the file name <b>must</b> be in the form `script-XXX.ts`. 
+
+## Running the scripts
+Simply paste the compiled `script-XX.js` file into the console of the page containing the data.
