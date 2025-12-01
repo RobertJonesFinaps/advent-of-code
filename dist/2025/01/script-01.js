@@ -14,7 +14,6 @@ function readDataFromDom() {
 // src/2025/01/safe-rotation-counter.ts
 function safeRotationCounter() {
   const dataString = readDataFromDom();
-  const asdf = "asdf";
   const dataArray = dataString.split("\n");
   let numberOfZeroHits = 0;
   dataArray.reduce((previousPosition, currentInput) => {

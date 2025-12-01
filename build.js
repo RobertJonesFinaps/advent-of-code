@@ -1,9 +1,9 @@
 import { build } from "esbuild";
 import { glob } from "glob";
+import { makeTemplate } from "./build-template-input.js";
 
 // find all script.ts files in each subfolder
 const scriptFiles = glob.sync("src/**/script-*.ts");
-
 build({
   entryPoints: scriptFiles,
   outbase: "src",
@@ -13,4 +13,6 @@ build({
   platform: "browser",
   sourcemap: true,
   target: "es2020",
-}).catch(() => process.exit(1));
+})
+  .then(() => scriptFiles.forEach((file) => makeTemplate(file)))
+  .catch(() => process.exit(1));

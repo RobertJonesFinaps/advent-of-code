@@ -19,3 +19,5 @@ Note to add new scripts, the file name <b>must</b> be in the form `script-XXX.ts
 
 ## Running the scripts
 Simply paste the compiled `script-XX.js` file into the console of the page containing the data.
+
+Alternatively if you want to run locally. Include the data html file next to the script you want to test as `index.html`. Run the bundle builder and the open the generated `index-XX.html` file from the dist folder with a browser.
