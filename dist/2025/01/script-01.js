@@ -6,17 +6,10 @@ function performanceCheck(functionToTest) {
   return time1 - time0;
 }
 
-// src/utils/read-data-from-dom.ts
-function readDataFromDom() {
-  return (document.getElementsByTagName("pre")[0]?.firstChild).data;
-}
-
 // src/2025/01/safe-rotation-counter.ts
-function safeRotationCounter() {
-  const dataString = readDataFromDom();
-  const dataArray = dataString.split("\n");
+function safeRotationCounter(dataArray2) {
   let numberOfZeroHits = 0;
-  dataArray.reduce((previousPosition, currentInput) => {
+  dataArray2.reduce((previousPosition, currentInput) => {
     if (!currentInput) return previousPosition;
     const direction = currentInput.charAt(0);
     const rotation = parseInt(currentInput.slice(1));
@@ -34,7 +27,17 @@ function safeRotationCounter() {
   return numberOfZeroHits;
 }
 
+// src/utils/read-data-from-dom.ts
+function readDataFromDom() {
+  return (document.getElementsByTagName("pre")[0]?.firstChild).data;
+}
+
 // src/2025/01/script-01.ts
-console.log("number of times on 0: ", safeRotationCounter());
-console.log("Time in ms: ", performanceCheck(safeRotationCounter));
+var dataString = readDataFromDom();
+var dataArray = dataString.split("\n");
+console.log("number of times on 0: ", safeRotationCounter(dataArray));
+console.log(
+  "Time in ms: ",
+  performanceCheck(() => safeRotationCounter(dataArray))
+);
 //# sourceMappingURL=script-01.js.map

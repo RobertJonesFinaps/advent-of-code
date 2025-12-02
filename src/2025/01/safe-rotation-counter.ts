@@ -1,15 +1,10 @@
-import { readDataFromDom } from "utils/read-data-from-dom";
-
 /** Day 1 challenge 1 part 1
  * Safe starting at 50
  * Rotation data Marked with L or R and a number
  *
  * Count number of rotations that end up landing on 0
  * */
-export function safeRotationCounter(): number {
-  const dataString: string = readDataFromDom();
-  const dataArray: string[] = dataString.split("\n");
-
+export function safeRotationCounter(dataArray: string[]): number {
   let numberOfZeroHits = 0;
   dataArray.reduce((previousPosition: number, currentInput: string) => {
     if (!currentInput) return previousPosition;
