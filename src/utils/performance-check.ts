@@ -7,9 +7,14 @@
  * @param functionToTest a function you wish to test
  * @returns time in miliseconds for that function to execute
  */
-export function performanceCheck(functionToTest: () => unknown): number {
+export function performanceCheck(
+  functionToTest: () => unknown,
+  iterations = 1000
+): number {
   const time0 = performance.now();
-  functionToTest();
+  for (let i = 0; i < iterations; i++) {
+    functionToTest();
+  }
   const time1 = performance.now();
-  return time1 - time0;
+  return (time1 - time0)/iterations;
 }

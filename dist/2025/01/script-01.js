@@ -1,9 +1,11 @@
 // src/utils/performance-check.ts
-function performanceCheck(functionToTest) {
+function performanceCheck(functionToTest, iterations = 1e3) {
   const time0 = performance.now();
-  functionToTest();
+  for (let i = 0; i < iterations; i++) {
+    functionToTest();
+  }
   const time1 = performance.now();
-  return time1 - time0;
+  return (time1 - time0) / iterations;
 }
 
 // src/2025/01/safe-rotation-counter.ts
