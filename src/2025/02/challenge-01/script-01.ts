@@ -1,7 +1,7 @@
 import { performanceCheck } from "utils/performance-check";
 import { readDataFromDom } from "utils/read-data-from-dom";
 import { calculateResult } from "./calculate-result";
-import { idRangeParser } from "./id-range-parser";
+import { idRangeParser } from "../id-range-parser";
 import { IdRange } from "../models";
 
 const inputString: string = readDataFromDom();

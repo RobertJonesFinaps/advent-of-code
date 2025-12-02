@@ -1,4 +1,4 @@
-import { IdRange } from "../models";
+import { IdRange } from "./models";
 
 /**
  * Parses a correctly formatted string into a series of ranges
