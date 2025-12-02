@@ -1,6 +1,10 @@
 import { build } from "esbuild";
 import { glob } from "glob";
 import { makeTemplate } from "./build-template-input.js";
+import fs from "fs";
+
+// clear old dist
+fs.rmSync("dist", { recursive: true, force: true });
 
 // find all script.ts files in each subfolder
 const scriptFiles = glob.sync("src/**/script-*.ts");
