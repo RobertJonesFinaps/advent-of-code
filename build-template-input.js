@@ -1,30 +1,42 @@
 import fs from "fs";
 import path from "path";
+import { glob } from "glob";
 
 export function makeTemplate(filePath) {
   const dirPath = path.dirname(filePath);
+  const templateFiles = glob.sync(`${dirPath}/*.html`);
 
-  if (!fs.existsSync(`${dirPath}/index.html`)) {
+  if (!templateFiles.length) {
     console.warn(
       "Skipping html generation for",
       filePath,
-      "No index file found!"
+      "No template found!"
     );
     return;
   }
 
-  const scriptToAdd = path.basename(filePath, ".ts").concat(".js");
-  const indexFileName = scriptToAdd
-    .replace("script", "index")
-    .replace(".js", ".html");
-  const distPath = `${dirPath.replace("src/", "dist/")}/${indexFileName}`;
+  templateFiles.forEach((file) => {
+    if (!fs.existsSync(file)) {
+      console.warn("Skipping html generation for", filePath, "File Error");
+      return;
+    }
 
-  let html = fs.readFileSync(`${dirPath}/index.html`, "utf-8");
+    const scriptToAdd = path.basename(filePath, ".ts").concat(".js");
+    const indexFileName = scriptToAdd
+      .replace("script", "index")
+      .replace(".js", "")
+      .concat(path.basename(file).replace("index", ""));
+    const distPath = `${path
+      .dirname(file)
+      .replace("src/", "dist/")}/${indexFileName}`;
 
-  html = html.replace(
-    "</body>",
-    `  <script src="${scriptToAdd}"></script>\n</body>`
-  );
+    let html = fs.readFileSync(file, "utf-8");
 
-  fs.writeFileSync(distPath, html, "utf-8");
+    html = html.replace(
+      "</body>",
+      `  <script src="${scriptToAdd}"></script>\n</body>`
+    );
+
+    fs.writeFileSync(distPath, html, "utf-8");
+  });
 }
